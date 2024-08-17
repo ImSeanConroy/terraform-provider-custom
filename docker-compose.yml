@@ -1,0 +1,26 @@
+services:
+  database:
+    image: mongo:latest
+    container_name: database
+    ports:
+      - "27017:27017"
+    networks:
+      - tf-tester-network
+      
+  application:
+    build:
+      context: .
+    container_name: application
+    ports:
+      - "3000:3000"
+    depends_on:
+      - database
+    environment:
+      - MONGO_URL=mongodb://database:27017/taskmanager
+      - PORT=3000
+      - SESSION_SECRET=8db871f007577adf97ebd9d747d38db871f007577adf97ebd9d747d3
+    networks:
+      - tf-tester-network
+
+networks:
+  tf-tester-network:
