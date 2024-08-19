@@ -1,10 +1,11 @@
 module terraform-provider-custom
 
-go 1.21
+go 1.22.0
 
 require (
 	github.com/hashicorp/terraform-plugin-docs v0.19.4
 	github.com/hashicorp/terraform-plugin-framework v1.11.0
+	github.com/imseanconroy/go-client v0.0.0-20240817133110-8840122ff5dd
 )
 
 require (
@@ -52,6 +53,9 @@ require (
 	github.com/posener/complete v1.2.3 // indirect
 	github.com/shopspring/decimal v1.3.1 // indirect
 	github.com/spf13/cast v1.5.0 // indirect
+	github.com/tidwall/gjson v1.17.3 // indirect
+	github.com/tidwall/match v1.1.1 // indirect
+	github.com/tidwall/pretty v1.2.0 // indirect
 	github.com/vmihailenco/msgpack/v5 v5.4.1 // indirect
 	github.com/vmihailenco/tagparser/v2 v2.0.0 // indirect
 	github.com/yuin/goldmark v1.7.1 // indirect

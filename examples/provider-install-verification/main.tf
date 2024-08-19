@@ -6,6 +6,4 @@ terraform {
   }
 }
 
-provider "custom" {}
-
-data "custom_coffees" "example" {}
+data "custom_tasks" "example" {}
