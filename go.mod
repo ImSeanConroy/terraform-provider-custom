@@ -5,7 +5,7 @@ go 1.22.0
 require (
 	github.com/hashicorp/terraform-plugin-docs v0.19.4
 	github.com/hashicorp/terraform-plugin-framework v1.11.0
-	github.com/imseanconroy/go-client v0.0.0-20240817133110-8840122ff5dd
+	github.com/imseanconroy/go-client v0.0.0-20240820082216-0978c5ce51f9
 )
 
 require (

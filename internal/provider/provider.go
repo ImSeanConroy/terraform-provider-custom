@@ -10,6 +10,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/provider/schema"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/hashicorp/terraform-plugin-log/tflog"
 	"github.com/imseanconroy/go-client"
 )
 
@@ -63,6 +64,8 @@ func (p *customProvider) Schema(_ context.Context, _ provider.SchemaRequest, res
 }
 
 func (p *customProvider) Configure(ctx context.Context, req provider.ConfigureRequest, resp *provider.ConfigureResponse) {
+	tflog.Info(ctx, "Configuring Custom client")
+
 	// Retrieve provider data from configuration
 	var config customProviderModel
 	diags := req.Config.Get(ctx, &config)
@@ -137,22 +140,31 @@ func (p *customProvider) Configure(ctx context.Context, req provider.ConfigureRe
 		return
 	}
 
+	ctx = tflog.SetField(ctx, "custom_url", url)
+	ctx = tflog.SetField(ctx, "custom_token", token)
+	ctx = tflog.MaskFieldValuesWithFieldKeys(ctx, "custom_token")
+
+	tflog.Debug(ctx, "Creating Custom client")
+
 	// Create a new Custom client using the configuration values
-	client := client.NewClient(url, token)
-	// if err != nil {
-	// 	resp.Diagnostics.AddError(
-	// 		"Unable to Create Custom API Client",
-	// 		"An unexpected error occurred when creating the Custom API client. "+
-	// 			"If the error is not clear, please contact the provider developers.\n\n"+
-	// 			"Custom Client Error: "+err.Error(),
-	// 	)
-	// 	return
-	// }
+	client, err := client.NewClient(url, token)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Unable to Create Custom API Client",
+			"An unexpected error occurred when creating the Custom API client. "+
+				"If the error is not clear, please contact the provider developers.\n\n"+
+				"Custom Client Error: "+err.Error(),
+		)
+		return
+	}
 
 	// Make the Custom client available during DataSource and Resource
 	// type Configure methods.
 	resp.DataSourceData = client
 	resp.ResourceData = client
+
+	tflog.Info(ctx, "Configured Custom client", map[string]any{"success": true})
+
 }
 
 // DataSources defines the data sources implemented in the provider.
