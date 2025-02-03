@@ -149,7 +149,9 @@ func (p *customProvider) Resources(ctx context.Context) []func() resource.Resour
 }
 
 func (p *customProvider) DataSources(ctx context.Context) []func() datasource.DataSource {
-	return []func() datasource.DataSource{}
+	return []func() datasource.DataSource{
+		NewNotesDataSource,
+	}
 }
 
 func New(version string) func() provider.Provider {
