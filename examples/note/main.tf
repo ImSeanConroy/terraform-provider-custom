@@ -12,11 +12,7 @@ provider "custom" {
 }
 
 resource "custom_note" "example" {
-  text = "New Note Example"
-}
- 
-resource "custom_note" "import" {
-  text = "Learn Robotics and SLAM"
+  text = "New Note"
 }
 
 output "example" {
