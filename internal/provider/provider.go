@@ -156,7 +156,9 @@ func (p *customProvider) Configure(ctx context.Context, req provider.ConfigureRe
 }
 
 func (p *customProvider) Resources(ctx context.Context) []func() resource.Resource {
-	return []func() resource.Resource{}
+	return []func() resource.Resource{
+		NewNoteResource,
+	}
 }
 
 func (p *customProvider) DataSources(ctx context.Context) []func() datasource.DataSource {

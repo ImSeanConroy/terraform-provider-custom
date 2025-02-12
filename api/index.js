@@ -39,6 +39,18 @@ app.post("/notes", (req, res) => {
   res.status(201).json({ message: "Note added", note: newNote });
 });
 
+// Route to get a note by ID
+app.get("/notes/:id", (req, res) => {
+  const { id } = req.params;
+  const note = notes.find((note) => note.id === id);
+
+  if (!note) {
+    return res.status(404).json({ error: "Note not found" });
+  }
+
+  res.json(note);
+});
+
 // Route to update a note by ID
 app.put("/notes/:id", (req, res) => {
   const { id } = req.params;
@@ -74,5 +86,5 @@ app.delete("/notes/:id", (req, res) => {
 
 // Start the server
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server is running on http://localhost:${PORT}/notes`);
 });
