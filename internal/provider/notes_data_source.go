@@ -1,3 +1,6 @@
+// Copyright (c) HashiCorp, Inc.
+// SPDX-License-Identifier: MPL-2.0
+
 package provider
 
 import (
@@ -68,22 +71,28 @@ func (d *notesDataSource) Metadata(_ context.Context, req datasource.MetadataReq
 // Schema defines the schema for the data source.
 func (d *notesDataSource) Schema(_ context.Context, _ datasource.SchemaRequest, resp *datasource.SchemaResponse) {
 	resp.Schema = schema.Schema{
+		Description: "Fetches the list of notes.",
 		Attributes: map[string]schema.Attribute{
 			"notes": schema.ListNestedAttribute{
-				Computed: true,
+				Description: "List of notes.",
+				Computed:    true,
 				NestedObject: schema.NestedAttributeObject{
 					Attributes: map[string]schema.Attribute{
 						"id": schema.StringAttribute{
-							Computed: true,
+							Description: "String uuid identifier of the note.",
+							Computed:    true,
 						},
 						"text": schema.StringAttribute{
-							Computed: true,
+							Description: "Note content.",
+							Computed:    true,
 						},
 						"created_at": schema.StringAttribute{
-							Computed: true,
+							Description: "Date and time note was created.",
+							Computed:    true,
 						},
 						"updated_at": schema.StringAttribute{
-							Computed: true,
+							Description: "Date and time note was last updated.",
+							Computed:    true,
 						},
 					},
 				},

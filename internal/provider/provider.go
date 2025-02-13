@@ -40,13 +40,16 @@ func (p *customProvider) Metadata(ctx context.Context, req provider.MetadataRequ
 
 func (p *customProvider) Schema(ctx context.Context, req provider.SchemaRequest, resp *provider.SchemaResponse) {
 	resp.Schema = schema.Schema{
+		Description: "Interact with Custom API.",
 		Attributes: map[string]schema.Attribute{
 			"host": schema.StringAttribute{
-				Optional: true,
+				Description: "URI for Custom API. May also be provided via CUSTOM_HOST environment variable.",
+				Optional:    true,
 			},
 			"token": schema.StringAttribute{
-				Optional:  true,
-				Sensitive: true,
+				Description: "Token for Custom API. May also be provided via CUSTOM_TOKEN environment variable.",
+				Optional:    true,
+				Sensitive:   true,
 			},
 		},
 	}
