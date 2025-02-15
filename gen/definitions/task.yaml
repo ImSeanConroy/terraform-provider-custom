@@ -1,0 +1,29 @@
+---
+name: Task
+rest_endpoint: /tasks
+id_attribute: id
+ds_description: Fetches the list of tasks.
+res_description: Manages tasks.
+attributes:
+  # - model_name: id
+  #   tf_name: id
+  #   id: true
+  #   type: String
+  #   description: String uuid identifier of the task.
+  #   example: 
+  - model_name: title
+    tf_name: title
+    type: String
+    mandatory: true
+    description: String uuid identifier of the task.
+    example: Example
+  - model_name: descripiton
+    tf_name: descripiton
+    type: String
+    description: Task description.
+    example: Example
+  - model_name: complete
+    tf_name: complete
+    type: Bool
+    description: Task completion status.
+    example: false

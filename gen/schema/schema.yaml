@@ -1,0 +1,30 @@
+---
+name: str() # Name of the resource
+rest_endpoint: str(required=False) # REST endpoint path
+ds_description: str(required=False) # Define a data source description
+res_description: str(required=False) # Define a resource description
+id_attribute: str(required=False) # Attribute name in payload from which ID should be derived
+attributes: list(include('attribute'), required=False) # List of attributes
+# test_prerequisites: str(required=False) # HCL code that is included in the acceptance tests to define prerequisites
+# no_import: bool(required=False) # Set to true if the resource does not support importing
+# no_data_source: bool(required=False) # Set to true if no data source should be created
+# no_resource: bool(required=False) # Set to true if no resource should be created
+---
+attribute:
+  model_name: str(required=False) # Name of the attribute in the model (payload)
+  tf_name: str(required=False) # Name of the attribute in the Terraform resource, by default derived from model_name
+  type: enum('String', 'Int64', 'StringInt64', 'Bool', 'List', 'Set', 'Version', 'Versions', required=False) # Type of the attribute
+  # element_type: enum('String', 'Int64', required=False) # only relevant if type is either 'List' or 'Set'
+  # data_path: list(str(), required=False) # Path to the attribute in the model structure
+  id: bool(required=False) # Set to true if the attribute is part of the ID
+  # reference: bool(required=False) # Indicates that the attribute is being used in the url path
+  mandatory: bool(required=False) # Set to true if the attribute is mandatory
+  # optional: bool(required=False) # Set to true if the attribute is optional
+  # exclude_test: bool(required=False) # Exclude attribute from example (documentation) and acceptance test
+  # exclude_example: bool(required=False) # Exclude attribute from example (documentation)
+  description: str(required=False) # Attribute description
+  example: any(str(), int(), bool(), required=False) # Example value for documentation, also used for acceptance test
+  # enum_values: list(str(), required=False) # List of enum values, only relevant if type is "String"
+  # default_value: any(str(), int(), bool(), required=False) # Default value for the attribute
+  # value: any(str(), int(), bool(), required=False) # Hardcoded value for the attribute
+  # test_value: str(required=False) # Value used for acceptance test

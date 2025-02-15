@@ -12,6 +12,11 @@ import (
 	"github.com/imseaconroy/terraform-provider-custom/internal/provider"
 )
 
+// Run "go generate" to format example terraform files and generate the docs for the registry/website
+
+// Run the resource and datasource generation tool.
+//go:generate go run gen/generator.go
+
 var (
 	// these will be set by the goreleaser configuration
 	// to appropriate values for the compiled binary.

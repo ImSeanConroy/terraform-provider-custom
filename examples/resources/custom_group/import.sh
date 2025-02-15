@@ -1,2 +1,2 @@
-# Order can be imported by specifying the string uuid identifier.
-terraform import custom_group.example 42015d3b-3ab6-4355-8361-b65aa5223a6a
+# group can be imported by specifying the string uuid identifier.
+terraform import custom_group.example "3f5b4d2e-8c12-4b8b-8cbb-3df2bcad50e5"

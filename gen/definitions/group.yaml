@@ -1,0 +1,19 @@
+---
+name: Group
+rest_endpoint: /groups
+id_attribute: id
+ds_description: Fetches the list of groups.
+res_description: Manages groups.
+attributes:
+  # - model_name: id
+  #   tf_name: id
+  #   id: true
+  #   type: String
+  #   description: String uuid identifier of the task.
+  #   example: 
+  - model_name: title
+    tf_name: title
+    type: String
+    mandatory: true
+    description: String uuid identifier of the task.
+    example: Example
